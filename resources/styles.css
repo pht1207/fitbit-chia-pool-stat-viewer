@@ -1,0 +1,71 @@
+.background {
+  viewport-fill: black;
+}
+
+#image{
+  x: 10%;
+  y: 5%;
+  width:258;
+  height: 46;
+}
+
+
+#averageEffectiveHash{
+  font-size: 20;
+  font-family: System-Bold;
+  text-length: 40;
+  text-anchor: middle;
+  x: 50%;
+  y: 30%;
+  fill: white;
+}
+
+#reportedHash{
+  font-size: 20;
+  font-family: System-Bold;
+  text-length: 36;
+  text-anchor: middle;
+  x: 50%;
+  y: 45%;
+  fill: white;
+}
+
+#staleSharePercentage{
+  font-size: 20;
+  font-family: System-Bold;
+  text-length: 32;
+  text-anchor: middle;
+  x: 50%;
+  y: 60%;
+  fill: white;
+}
+
+#invalidSharePercentage{
+  font-size: 20;
+  font-family: System-Bold;
+  text-length: 32;
+  text-anchor: middle;
+  x: 50%;
+  y: 75%;
+  fill: white;
+}
+
+#flexFooter{
+  font-size: 16;
+  font-family: System-Bold;
+  text-length: 32;
+  text-anchor: middle;
+  x: 50%;
+  y: 90%;
+  fill: white;
+}
+
+#footer{
+  font-size: 16;
+  font-family: System-Bold;
+  text-length: 32;
+  text-anchor: middle;
+  x: 50%;
+  y: 98%;
+  fill: white;
+}
