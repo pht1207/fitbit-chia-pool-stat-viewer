@@ -19,30 +19,6 @@ function fitbitScreenDocumentSettings(props) {
           settingsKey="address"
         />
         </Section>
- {/*}       <Section
-        title={<Text bold align="center">Data Display Settings</Text>}>
-
-        <Toggle
-          label="Current Effective Hashrate"
-          settingsKey="currentEffectiveHash"
-        />
-        <Toggle
-          label="Average Effective Hashrate"
-          settingsKey="avgEffectiveHash"
-        />
-        <Toggle
-          label="Reported Hashrate"
-          settingsKey="reportedHash"
-        />
-        <Toggle
-          label="Stale Shares Percentage"
-          settingsKey="staleSharesPercentage"
-        />
-        <Toggle
-          label="Invalid Share Percentage"
-          settingsKey="invalidSharesPercentage"
-        />
-        </Section>*/}
     </Page>
   );
 }
