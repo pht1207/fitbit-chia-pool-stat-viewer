@@ -32,21 +32,14 @@ console.log(ENDPOINT);
 }
 //Queries flexpool's API for data
 function queryFlexpoolAPI(ENDPOINT) {
+  console.log("FETCH BEGINNING!")
   fetch(ENDPOINT) //ENDPOINT again, is the URL for the flexpool API
   .then(function (response) {
     response.json()
     .then(function(data) { //Data is what is received
       let flexpoolData = {};
-      if(data["error"] !== null){
-        if(data["error"]["code"] == -33){//Code for invalid coin
-          flexpoolData = {error: ['noCoin']};
-        }
-        else if(data["error"]["code"] == -34){//Code for invalid address
-          flexpoolData = {error: ['noAddress']};
-        }
-        else{
-          flexpoolData = {error: ['unknown']};//Code that is unlikely to happen
-        }
+      if(data["error"] === "Farmer not found"){
+        flexpoolData = {error: ["FarmerNotFound"]}
         returnFlexpoolData(flexpoolData);
       }
       else{
