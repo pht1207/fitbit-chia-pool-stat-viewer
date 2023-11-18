@@ -12,6 +12,12 @@ const staleSharePercentageHTML = document.getElementById("staleSharePercentage")
 
 const invalidSharePercentageHTML = document.getElementById("invalidSharePercentage");
 
+
+const farmerName = "";
+const tib_24h = "";
+const currentEffort = ""
+
+
 //Sends a request to the companion app to fetch data from flexpool API.
 function fetchFlexpoolData() {
   if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
@@ -25,7 +31,7 @@ function fetchFlexpoolData() {
 function processFlexpoolData(data) {
   //Changes the text of each HTML element to the appropriate value.
   //Displays data in format suitable to XCH
-  if(data.coin == 'xch'){
+  /*if(data.coin == 'xch'){
     if(data.averageEffectiveHash > 1000000000000000){
       effectiveHashHTML.text = `Avg Effective Space: ${(data.averageEffectiveHash/1000000000000000).toFixed(2)}PB`;
     }
@@ -40,28 +46,14 @@ function processFlexpoolData(data) {
     }
     staleSharePercentageHTML.text = `Stale Share Percentage: ${((data.staleShares/data.validShares)*100).toFixed(2)}%`;
     invalidSharePercentageHTML.text = `Invalid Share Percentage: ${((data.invalidShares/data.validShares)*100).toFixed(2)}%`;
+  }*/
+
+  if(data.type == 'farmer'){
+    effectiveHashHTML.text = 'Farmer name: '+data.farmer_name;
+    reportedHashHTML.text = 'Avg TiB/24hr: '+data.tib_24h;
+    staleSharePercentageHTML.text = 'Current Effort: '+data.current_effort+'%';
   }
 
-  //Displays data in format suitable to ETC or IRON
-  else if(data.coin == 'etc'|| data.coin == 'iron'){
-    if(data.averageEffectiveHash > 1000000000000){
-      effectiveHashHTML.text = `Avg Effective Hashrate: ${(data.averageEffectiveHash/1000000000000).toFixed(2)}TH/s`;
-    }
-    else if(data.averageEffectiveHash > 1000000000){
-      effectiveHashHTML.text = `Avg Effective Hashrate: ${(data.averageEffectiveHash/1000000000).toFixed(2)}GH/s`;
-    }
-    else{
-      effectiveHashHTML.text = `Avg Effective Hashrate: ${(data.averageEffectiveHash/1000000).toFixed(2)}MHs/s`;
-    }
-    if(data.reportedHash > 1000000000){
-      reportedHashHTML.text = `Reported Hashrate: ${(data.reportedHash/1000000000).toFixed(2)}GH/s`;
-    }
-    else{
-      reportedHashHTML.text = `Reported Hashrate: ${(data.reportedHash/1000000).toFixed(2)}MH/s`;
-    }
-    staleSharePercentageHTML.text = `Stale Share Percentage: ${((data.staleShares/data.validShares)*100).toFixed(2)}%`;
-    invalidSharePercentageHTML.text = `Invalid Share Percentage: ${((data.invalidShares/data.validShares)*100).toFixed(2)}%`;
-  }
 
 
   //Final case if there is an error

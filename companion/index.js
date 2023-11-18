@@ -32,7 +32,7 @@ function queryFlexpoolAPI(ENDPOINT) {
   fetch(ENDPOINT) //ENDPOINT again, is the URL for the flexpool API
   .then(function (response) {
     response.json()
-    .then(function(data) {
+    .then(function(data) { //Data is what is received
       let flexpoolData = {};
       if(data["error"] !== null){
         if(data["error"]["code"] == -33){//Code for invalid coin
@@ -49,17 +49,15 @@ function queryFlexpoolAPI(ENDPOINT) {
       else{
       //Creates the flexpoolData object from the JSON given by the flexpool API. It has multiple variables.
       flexpoolData = {
-        //Gets the coin type so it can be used in the app/index.js processFlexpoolData function once all of this is sent
-        coin: [coin],
+        type: data["type"],
         //The 'data' is the flexpool json object that is returned, with [result], we are accessing the result object within that object
         //And with [averageEffectiveHashrate] for example, we are accessing the primitive data type inside it.
-        averageEffectiveHash: data["result"]["averageEffectiveHashrate"],
-        //Same premise as above, however implemented for below variables
-        currentHash: data["result"]["currentEffectiveHashrate"],
-        reportedHash: data["result"]["reportedHashrate"],
-        validShares: data["result"]["validShares"],
-        staleShares: data["result"]["staleShares"],
-        invalidShares: data["result"]["invalidShares"]
+        farmer_name: data["attributes"]["farmer_name"],
+        tib_24h: data["attributes"]["tib_24h"],
+        current_effort: data["attributes"]["current_effort"]
+        //validShares: data["attributes"]["validShares"],
+        //staleShares: data["attributes"]["staleShares"],
+        //invalidShares: data["attributes"]["invalidShares"]
       }
       // Send the flexpoolData data object to the returnFlexpoolData so that it may be sent to device.
       returnFlexpoolData(flexpoolData);
