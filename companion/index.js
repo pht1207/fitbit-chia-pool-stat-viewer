@@ -1,4 +1,4 @@
-//This is the companion code, used on the smartphone to query the Flexpool API for information so that it may be sent to the fitbit watch app.
+//This is the companion code, used on the smartphone to query the SpaceFarmers API for information so that it may be sent to the fitbit watch app.
 
 //Used to communicate with app.
 import * as messaging from "messaging";
@@ -7,7 +7,7 @@ import { settingsStorage } from "settings";
 let launcherID;
 let sentLauncherID;
 
-//This will set the variables, then call the queryFlexpoolAPI function so that variables can be updated dynamically rather than permanently
+//This will set the variables, then call the querySpaceFarmersAPI function so that variables can be updated dynamically rather than permanently
 function setVariables(){
 //Fetches the wallet address and coin type from the user's settings and checks if there even are settings first.
 if(settingsStorage.getItem("launcherID") !== null){
@@ -24,19 +24,19 @@ if(settingsStorage.getItem("launcherID") !== null){
   console.log(sentLauncherID)
 }
 
-//Declares the endpoint variable which is just a link to flexpool api, inserting the user's wallet and selected coin type.
+//Declares the endpoint variable which is just a link to spacefarmers api, inserting the user's wallet and selected coin type.
 var ENDPOINT = "https://spacefarmers.io/api/farmers/"+sentLauncherID;
 console.log(ENDPOINT);
-  //Call the queryFlexpoolAPI function now that we've created the proper ENDPOINT with settings' current variables
-  queryFlexpoolAPI(ENDPOINT);
+  //Call the querySpaceFarmersAPI function now that we've created the proper ENDPOINT with settings' current variables
+  querySpaceFarmersAPI(ENDPOINT);
 }
-//Queries flexpool's API for data
-function queryFlexpoolAPI(ENDPOINT) {
+//Queries SpaceFarmers's API for data
+function querySpaceFarmersAPI(ENDPOINT) {
   console.log("FETCH BEGINNING!")
-  fetch(ENDPOINT) //ENDPOINT again, is the URL for the flexpool API
+  fetch(ENDPOINT)
   .then(function (response) {
     response.json()
-    .then(function(data) { //Data is what is received
+    .then(function(data) { //Data is what is received from api call
       let spaceFarmersData = {};
       if(data["error"] === "Farmer not found"){
         spaceFarmersData = {error: ["FarmerNotFound"]}
@@ -44,19 +44,14 @@ function queryFlexpoolAPI(ENDPOINT) {
       }
       else{
         console.log(data)
-      //Creates the flexpoolData object from the JSON given by the flexpool API. It has multiple variables.
+      //Creates the spaceFarmersData object from the JSON given by the SpaceFarmers API. It has multiple variables.
       spaceFarmersData = {
         type: data["data"]["type"],
-        //The 'data' is the flexpool json object that is returned, with [result], we are accessing the result object within that object
-        //And with [averageEffectiveHashrate] for example, we are accessing the primitive data type inside it.
         farmer_name: data["data"]["attributes"]["farmer_name"],
         tib_24h: data["data"]["attributes"]["tib_24h"],
         current_effort: data["data"]["attributes"]["current_effort"]
-        //validShares: data["attributes"]["validShares"],
-        //staleShares: data["attributes"]["staleShares"],
-        //invalidShares: data["attributes"]["invalidShares"]
       }
-      // Send the flexpoolData data object to the returnFlexpoolData so that it may be sent to device.
+      // Send the spaceFarmersData data object to the sendSpaceFArmersDataToApp so that it may be sent to device.
       sendSpaceFarmersDataToApp(spaceFarmersData);
     }
     });
