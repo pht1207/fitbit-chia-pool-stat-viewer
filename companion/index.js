@@ -26,7 +26,6 @@ if(settingsStorage.getItem("launcherID") !== null){
 
 //Declares the endpoint variable which is just a link to spacefarmers api, inserting the user's wallet and selected coin type.
 var ENDPOINT = "https://spacefarmers.io/api/farmers/"+sentLauncherID;
-console.log(ENDPOINT);
   //Call the querySpaceFarmersAPI function now that we've created the proper ENDPOINT with settings' current variables
   querySpaceFarmersAPI(ENDPOINT);
 }
@@ -43,7 +42,6 @@ function querySpaceFarmersAPI(ENDPOINT) {
         sendSpaceFarmersDataToApp(spaceFarmersData);
       }
       else{
-        console.log(data)
       //Creates the spaceFarmersData object from the JSON given by the SpaceFarmers API. It has multiple variables.
       spaceFarmersData = {
         type: data["data"]["type"],
