@@ -1,9 +1,8 @@
 <svg class="background">
     <image id="image" href="logo.png" />
-    <text id="averageEffectiveHash" />
-    <text id="reportedHash" />  
-    <text id="staleSharePercentage" />
-    <text id="invalidSharePercentage" />
-    <text id ="flexFooter">API By Flexpool.io</text>
+    <text id="farmerName" />
+    <text id="tib_24h" />  
+    <text id="currentEffort" />
+    <text id ="flexFooter">API By spacefarmers.io</text>
     <text id ="footer">App By Parker Throneberry</text>
 </svg>

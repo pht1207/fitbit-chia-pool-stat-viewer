@@ -17,7 +17,7 @@
     "buildTargets": [
       "atlas",
       "vulcan"
-    ],
+        ],
     "i18n": {},
     "defaultLanguage": "en-US"
   },
