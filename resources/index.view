@@ -3,6 +3,6 @@
     <text id="farmerName" />
     <text id="tib_24h" />  
     <text id="currentEffort" />
-    <text id ="flexFooter">API By spacefarmers.io</text>
+    <text id ="flexFooter">API By SpaceFarmers.io</text>
     <text id ="footer">App By Parker Throneberry</text>
 </svg>
