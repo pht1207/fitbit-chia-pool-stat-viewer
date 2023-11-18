@@ -52,6 +52,7 @@ function processFlexpoolData(data) {
     effectiveHashHTML.text = 'Farmer name: '+data.farmer_name;
     reportedHashHTML.text = 'Avg TiB/24hr: '+data.tib_24h;
     staleSharePercentageHTML.text = 'Current Effort: '+data.current_effort+'%';
+    invalidSharePercentageHTML.text = "test"
   }
 
 

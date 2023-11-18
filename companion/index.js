@@ -11,19 +11,22 @@ let sentLauncherID;
 function setVariables(){
 //Fetches the wallet address and coin type from the user's settings and checks if there even are settings first.
 if(settingsStorage.getItem("launcherID") !== null){
-  launcherID = settingsStorage.getItem("launcherID");
+  const settingsObject = JSON.parse(settingsStorage.getItem("launcherID"));
+  launcherID = settingsObject.name;
   //selects the launcherID out of the launcherID string
   if(launcherID.length === 66){
     sentLauncherID = launcherID.substring(2, launcherID.length-1)
-    console.log(sentLauncherID)
   }
   else if(launcherID.length === 64){
     sentLauncherID = launcherID;
   }
+  sentLauncherID;
+  console.log(sentLauncherID)
 }
 
 //Declares the endpoint variable which is just a link to flexpool api, inserting the user's wallet and selected coin type.
 var ENDPOINT = "https://spacefarmers.io/api/farmers/"+sentLauncherID;
+console.log(ENDPOINT);
   //Call the queryFlexpoolAPI function now that we've created the proper ENDPOINT with settings' current variables
   queryFlexpoolAPI(ENDPOINT);
 }
