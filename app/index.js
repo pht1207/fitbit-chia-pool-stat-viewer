@@ -13,7 +13,7 @@ const currentEffort = document.getElementById("currentEffort");
 
 
 //Sends a request to the companion app to fetch data from flexpool API.
-function fetchFlexpoolData() {
+function fetchSpaceFarmersData() {
   if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
     // Send the command/message to the companion's communication socket with 'flexpoolData' inside it.
     messaging.peerSocket.send({
@@ -22,7 +22,7 @@ function fetchFlexpoolData() {
   }
 }
 
-function processFlexpoolData(data) {
+function processSpaceFarmersData(data) {
   //Changes the text of each HTML element to the appropriate value.
   if(data.type == 'farmer'){
     farmerName.text = 'Farmer name: '+data.farmer_name;
@@ -38,23 +38,23 @@ function processFlexpoolData(data) {
   }
 
 }
-//Listens to see if socket is open, if so, execute fetchFlexpoolData.
+//Listens to see if socket is open, if so, execute fetchSpaceFarmersData.
 messaging.peerSocket.addEventListener("open", (evt) => {
-  fetchFlexpoolData();
+  fetchSpaceFarmersData();
 });
 
 
-//Listens for a message from companion (meaning it is complete), will send it to the processFlexpoolData if so.
+//Listens for a message from companion (meaning it is complete), will send it to the processSpaceFarmersData if so.
 messaging.peerSocket.addEventListener("message", (evt) => {
   if (evt.data) {
-    processFlexpoolData(evt.data);
+    processSpaceFarmersData(evt.data);
   }//The else if listens for the settings to be sent over
 });
 
 //This is where the message from settings update is recieved
 messaging.peerSocket.addEventListener("message", (evt) => {
   if (evt.data && evt.data.command === "settingsUpdate") {
-    fetchFlexpoolData();
+    fetchSpaceFarmersData();
   }
 });
   
