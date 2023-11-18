@@ -40,7 +40,7 @@ function queryFlexpoolAPI(ENDPOINT) {
       let spaceFarmersData = {};
       if(data["error"] === "Farmer not found"){
         spaceFarmersData = {error: ["FarmerNotFound"]}
-        returnFlexpoolData(spaceFarmersData);
+        sendSpaceFarmersDataToApp(spaceFarmersData);
       }
       else{
         console.log(data)
@@ -57,7 +57,7 @@ function queryFlexpoolAPI(ENDPOINT) {
         //invalidShares: data["attributes"]["invalidShares"]
       }
       // Send the flexpoolData data object to the returnFlexpoolData so that it may be sent to device.
-      returnFlexpoolData(spaceFarmersData);
+      sendSpaceFarmersDataToApp(spaceFarmersData);
     }
     });
   })  //Catches errors and outputs into console about it.
@@ -76,7 +76,7 @@ messaging.peerSocket.addEventListener("message", (evt) => {
   
 
 //If socket is open and ready, send the fetched data to the app/index.js.
-function returnFlexpoolData(data) {
+function sendSpaceFarmersDataToApp(data) {
   if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
     messaging.peerSocket.send(data);
   } else { //If it can't console log an error.
