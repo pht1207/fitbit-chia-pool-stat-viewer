@@ -4,25 +4,26 @@
 import * as messaging from "messaging";
 //Used to fetch settings from the user's settingStorage.
 import { settingsStorage } from "settings";
-let walletAddress;
-let coinType;
-let coin;
-let wallet;
+let launcherID;
+let sentLauncherID;
 
 //This will set the variables, then call the queryFlexpoolAPI function so that variables can be updated dynamically rather than permanently
 function setVariables(){
 //Fetches the wallet address and coin type from the user's settings and checks if there even are settings first.
-if(settingsStorage.getItem("address") !== null && settingsStorage.getItem("coin") !== null){
-walletAddress = settingsStorage.getItem("address");
-coinType = settingsStorage.getItem("coin");
-//selects the coin out of the coinType string
-coin = coinType.substring(20, coinType.length-19);
-//selects the wallet address out of the walletAddress string
-wallet = walletAddress.substring(9, walletAddress.length-2);
+if(settingsStorage.getItem("launcherID") !== null){
+  launcherID = settingsStorage.getItem("launcherID");
+  //selects the launcherID out of the launcherID string
+  if(launcherID.length === 66){
+    sentLauncherID = launcherID.substring(2, launcherID.length-1)
+    console.log(sentLauncherID)
+  }
+  else if(launcherID.length === 64){
+    sentLauncherID = launcherID;
+  }
 }
 
 //Declares the endpoint variable which is just a link to flexpool api, inserting the user's wallet and selected coin type.
-var ENDPOINT = "https://api.flexpool.io/v2/miner/stats?address="+wallet+"&coin="+coin;
+var ENDPOINT = "https://spacefarmers.io/api/farmers/"+sentLauncherID;
   //Call the queryFlexpoolAPI function now that we've created the proper ENDPOINT with settings' current variables
   queryFlexpoolAPI(ENDPOINT);
 }
