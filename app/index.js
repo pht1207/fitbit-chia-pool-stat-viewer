@@ -52,27 +52,15 @@ function processFlexpoolData(data) {
     effectiveHashHTML.text = 'Farmer name: '+data.farmer_name;
     reportedHashHTML.text = 'Avg TiB/24hr: '+data.tib_24h;
     staleSharePercentageHTML.text = 'Current Effort: '+data.current_effort+'%';
-    invalidSharePercentageHTML.text = "test"
   }
 
 
 
   //Final case if there is an error
   else if(data.error){
-    if(data.error == 'noCoin'){
-      effectiveHashHTML.text = `In settings, please enter your:`;
-      reportedHashHTML.text = `Coin-Type and Wallet Address`;
+    if(data.error == 'FarmerNotFound'){
+      effectiveHashHTML.text = `Farmer not found`;
     }
-    else if(data.error == 'noAddress'){
-      effectiveHashHTML.text = `In settings, please enter your:`;
-      reportedHashHTML.text = `Wallet Address`;
-    }
-    else if(data.error == 'unknown'){
-      effectiveHashHTML.text = `Unknown error with flexpool API`;
-    }
-    staleSharePercentageHTML.text = ``;
-    invalidSharePercentageHTML.text = ``;
-
   }
 
 }
