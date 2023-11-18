@@ -3,21 +3,17 @@ import * as document from "document";
 import * as messaging from "messaging";
 
 //Creates text for the HTML elements that just has 'loading...' inside, for placeholder while content is fetched.
-const farmerName = document.getElementById("farmerName");
+let farmerName = document.getElementById("farmerName");
 farmerName.text = `Attempting to query Flexpool.io...`;
-
-const tib_24h = document.getElementById("tib_24h");
-
-const currentEffort = document.getElementById("currentEffort");
-
-
+let tib_24h = document.getElementById("tib_24h");
+let currentEffort = document.getElementById("currentEffort");
 
 //Sends a request to the companion app to fetch data from flexpool API.
 function fetchSpaceFarmersData() {
   if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
     // Send the command/message to the companion's communication socket with 'flexpoolData' inside it.
     messaging.peerSocket.send({
-      command: "flexpoolData"
+      command: "fetchDataCommand"
     });
   }
 }

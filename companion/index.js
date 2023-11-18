@@ -62,9 +62,9 @@ function querySpaceFarmersAPI(ENDPOINT) {
 }
   
 
-//If the 'flexpoolData' message is recieved, query the flexpoolAPI using the queryFlexpoolAPI() function.
+//If the 'fetchDataCommand' message is recieved, query the flexpoolAPI using the queryFlexpoolAPI() function.
 messaging.peerSocket.addEventListener("message", (evt) => {
-  if (evt.data && evt.data.command === "flexpoolData") {
+  if (evt.data && evt.data.command === "fetchDataCommand") {
     setVariables();//Sets the variables given what is presently in settings 
   }
 });
