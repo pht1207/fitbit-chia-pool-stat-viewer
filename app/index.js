@@ -69,4 +69,4 @@ messaging.peerSocket.addEventListener("error", (err) => {
 });
 
 // Fetch the data every 30 seconds.
-setInterval(fetchFlexpoolData, 300000);
+setInterval(processSpaceFarmersData, 300000);
