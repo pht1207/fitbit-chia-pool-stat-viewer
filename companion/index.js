@@ -43,14 +43,15 @@ function queryFlexpoolAPI(ENDPOINT) {
         returnFlexpoolData(flexpoolData);
       }
       else{
+        console.log(data)
       //Creates the flexpoolData object from the JSON given by the flexpool API. It has multiple variables.
       flexpoolData = {
-        type: data["type"],
+        type: data["data"]["type"],
         //The 'data' is the flexpool json object that is returned, with [result], we are accessing the result object within that object
         //And with [averageEffectiveHashrate] for example, we are accessing the primitive data type inside it.
-        farmer_name: data["attributes"]["farmer_name"],
-        tib_24h: data["attributes"]["tib_24h"],
-        current_effort: data["attributes"]["current_effort"]
+        farmer_name: data["data"]["attributes"]["farmer_name"],
+        tib_24h: data["data"]["attributes"]["tib_24h"],
+        current_effort: data["data"]["attributes"]["current_effort"]
         //validShares: data["attributes"]["validShares"],
         //staleShares: data["attributes"]["staleShares"],
         //invalidShares: data["attributes"]["invalidShares"]
