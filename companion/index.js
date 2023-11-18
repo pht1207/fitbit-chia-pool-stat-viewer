@@ -37,15 +37,15 @@ function queryFlexpoolAPI(ENDPOINT) {
   .then(function (response) {
     response.json()
     .then(function(data) { //Data is what is received
-      let flexpoolData = {};
+      let spaceFarmersData = {};
       if(data["error"] === "Farmer not found"){
-        flexpoolData = {error: ["FarmerNotFound"]}
-        returnFlexpoolData(flexpoolData);
+        spaceFarmersData = {error: ["FarmerNotFound"]}
+        returnFlexpoolData(spaceFarmersData);
       }
       else{
         console.log(data)
       //Creates the flexpoolData object from the JSON given by the flexpool API. It has multiple variables.
-      flexpoolData = {
+      spaceFarmersData = {
         type: data["data"]["type"],
         //The 'data' is the flexpool json object that is returned, with [result], we are accessing the result object within that object
         //And with [averageEffectiveHashrate] for example, we are accessing the primitive data type inside it.
@@ -57,7 +57,7 @@ function queryFlexpoolAPI(ENDPOINT) {
         //invalidShares: data["attributes"]["invalidShares"]
       }
       // Send the flexpoolData data object to the returnFlexpoolData so that it may be sent to device.
-      returnFlexpoolData(flexpoolData);
+      returnFlexpoolData(spaceFarmersData);
     }
     });
   })  //Catches errors and outputs into console about it.
