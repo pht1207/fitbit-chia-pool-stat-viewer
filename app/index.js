@@ -4,7 +4,7 @@ import * as messaging from "messaging";
 
 //Creates text for the HTML elements that just has 'loading...' inside, for placeholder while content is fetched.
 let farmerName = document.getElementById("farmerName");
-farmerName.text = `Attempting to query Flexpool.io...`;
+farmerName.text = `Querying API...`;
 let tib_24h = document.getElementById("tib_24h");
 let currentEffort = document.getElementById("currentEffort");
 
@@ -22,7 +22,7 @@ function processSpaceFarmersData(data) {
   //Changes the text of each HTML element to the appropriate value.
   if(data.type == 'farmer'){
     farmerName.text = 'Farmer name: '+data.farmer_name;
-    tib_24h.text = 'Avg TiB: '+data.tib_24h+"TiB";
+    tib_24h.text = 'Avg TiB: '+data.tib_24h+" TiB";
     currentEffort.text = 'Current Effort: '+data.current_effort+'%';
   }
 
