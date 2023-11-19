@@ -10,7 +10,7 @@
   "fitbit": {
     "appUUID": "ed21bbe4-caf8-4bd3-9b4a-d55cbd57319f",
     "appType": "app",
-    "appDisplayName": "Flexpool.io Data",
+    "appDisplayName": "SpaceFarmers.io Data",
     "iconFile": "resources/icon.png",
     "wipeColor": "#1633ff",
     "requestedPermissions": ["access_internet"],
