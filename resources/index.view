@@ -1,5 +1,9 @@
 <svg class="background">
-    <image id="image" href="logo.png" />
+<defs>
+    <link rel="import" href="/mnt/sysassets/system_widget.defs" />
+    <link rel="stylesheet" href="styles.css" />
+</defs>
+    <image id="image" href="logo.png" class="center-text"/>
     <text id="farmerName" />
     <text id="tib_24h" />  
     <text id="currentEffort" />

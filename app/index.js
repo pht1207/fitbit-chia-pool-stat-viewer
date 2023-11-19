@@ -22,7 +22,7 @@ function processSpaceFarmersData(data) {
   //Changes the text of each HTML element to the appropriate value.
   if(data.type == 'farmer'){
     farmerName.text = 'Farmer name: '+data.farmer_name;
-    tib_24h.text = 'Avg TiB/24hr: '+data.tib_24h;
+    tib_24h.text = 'Avg TiB: '+data.tib_24h+"TiB";
     currentEffort.text = 'Current Effort: '+data.current_effort+'%';
   }
 

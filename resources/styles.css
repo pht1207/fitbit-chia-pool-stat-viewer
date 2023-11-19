@@ -11,7 +11,7 @@
 
 
 #farmerName{
-  font-size: 20;
+  font-size: 24;
   font-family: System-Bold;
   text-length: 40;
   text-anchor: middle;
@@ -21,7 +21,7 @@
 }
 
 #tib_24h{
-  font-size: 20;
+  font-size: 24;
   font-family: System-Bold;
   text-length: 36;
   text-anchor: middle;
@@ -31,7 +31,7 @@
 }
 
 #currentEffort{
-  font-size: 20;
+  font-size: 24;
   font-family: System-Bold;
   text-length: 32;
   text-anchor: middle;
