@@ -29,7 +29,10 @@ function processSpaceFarmersData(data) {
   //Final case if there is an error
   else if(data.error){
     if(data.error == 'FarmerNotFound'){
-      farmerName.text = `Farmer not found`;
+      farmerName.text = `Farmer Not Found`;
+      tib_24h.text = 'Check Launcher ID'
+      currentEffort.text = '';
+
     }
   }
 

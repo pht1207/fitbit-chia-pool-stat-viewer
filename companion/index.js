@@ -31,7 +31,6 @@ var ENDPOINT = "https://spacefarmers.io/api/farmers/"+sentLauncherID;
 }
 //Queries SpaceFarmers's API for data
 function querySpaceFarmersAPI(ENDPOINT) {
-  console.log("FETCH BEGINNING!")
   fetch(ENDPOINT)
   .then(function (response) {
     response.json()
