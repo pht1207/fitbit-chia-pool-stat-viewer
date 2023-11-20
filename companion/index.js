@@ -14,13 +14,14 @@ if(settingsStorage.getItem("launcherID") !== null){
   const settingsObject = JSON.parse(settingsStorage.getItem("launcherID"));
   launcherID = settingsObject.name;
   //selects the launcherID out of the launcherID string
-  if(launcherID.length === 66){
-    sentLauncherID = launcherID.substring(2, launcherID.length-1)
+  if(launcherID.length === 66){//This is for if someone has the 0x in their launcher id
+    sentLauncherID = launcherID.substring(2, launcherID.length)
+    console.lo
   }
   else if(launcherID.length === 64){
     sentLauncherID = launcherID;
   }
-  sentLauncherID;
+  console.log(launcherID.length)
   console.log(sentLauncherID)
 }
 
