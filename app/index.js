@@ -1,3 +1,10 @@
+//Checks what device this is
+
+import { me as device } from "device";
+if (!device.screen) device.screen = { width: 348, height: 250 };
+console.log(`Dimensions: ${device.screen.width}x${device.screen.height}`);
+
+
 import * as document from "document";
 //Used to communicate with companion
 import * as messaging from "messaging";

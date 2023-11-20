@@ -1,3 +1,8 @@
+//Checks what device this is
+import { device } from "peer";
+if (!device.screen) device.screen = { width: 348, height: 250 };
+console.log(`Dimensions: ${device.screen.width}x${device.screen.height}`);
+
 //This is the companion code, used on the smartphone to query the SpaceFarmers API for information so that it may be sent to the fitbit watch app.
 
 //Used to communicate with app.
@@ -16,13 +21,10 @@ if(settingsStorage.getItem("launcherID") !== null){
   //selects the launcherID out of the launcherID string
   if(launcherID.length === 66){//This is for if someone has the 0x in their launcher id
     sentLauncherID = launcherID.substring(2, launcherID.length)
-    console.lo
   }
   else if(launcherID.length === 64){
     sentLauncherID = launcherID;
   }
-  console.log(launcherID.length)
-  console.log(sentLauncherID)
 }
 
 //Declares the endpoint variable which is just a link to spacefarmers api, inserting the user's wallet and selected coin type.
