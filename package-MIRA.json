@@ -4,21 +4,20 @@
   "private": true,
   "license": "UNLICENSED",
   "devDependencies": {
-    "@fitbit/sdk": "~6.1.0",
+    "@fitbit/sdk": "~4.2.0",
     "@fitbit/sdk-cli": "~1.7.3"
   },
   "fitbit": {
     "appUUID": "c04842b0-09af-4cbb-b871-927b7bf9497e",
     "appType": "app",
-    "appDisplayName": "SpaceFarmers.io",
+    "appDisplayName": "SpaceFarmers",
     "iconFile": "resources/icon.png",
     "wipeColor": "#14bef2",
     "requestedPermissions": [
       "access_internet"
     ],
     "buildTargets": [
-      "atlas",
-      "vulcan"
+      "mira"
     ],
     "i18n": {},
     "defaultLanguage": "en-US"
